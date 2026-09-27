@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ETF Momentum Signals</title>
+<meta name="description" content="Current target allocation of the 50/50 ETF momentum blend on 25 NSE ETFs, updated automatically on rebalance days.">
+<style>
+  :root {
+    --surface: #fcfcfb; --card: #ffffff; --line: #e4e3df;
+    --ink: #0b0b0b; --ink2: #52514e; --muted: #8a8984;
+    --blue: #2a78d6; --orange: #eb6834; --aqua: #1baf7a; --red: #e34948;
+    --bar-bg: #f0efec;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --surface: #1a1a19; --card: #232321; --line: #383835;
+      --ink: #ffffff; --ink2: #c3c2b7; --muted: #8f8e87;
+      --blue: #3987e5; --orange: #d95926; --aqua: #199e70; --red: #e66767;
+      --bar-bg: #2e2e2b;
+    }
+  }
+  :root[data-theme="dark"] {
+    --surface: #1a1a19; --card: #232321; --line: #383835;
+    --ink: #ffffff; --ink2: #c3c2b7; --muted: #8f8e87;
+    --blue: #3987e5; --orange: #d95926; --aqua: #199e70; --red: #e66767;
+    --bar-bg: #2e2e2b;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--surface); color: var(--ink);
+         font: 15px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 980px; margin: 0 auto; padding: 24px 16px 48px; }
+  h1 { font-size: 26px; margin: 0 0 4px; }
+  h2 { font-size: 17px; margin: 0 0 12px; }
+  .sub { color: var(--ink2); margin: 0 0 20px; }
+  .meta { display: flex; flex-wrap: wrap; gap: 8px 20px; color: var(--ink2); font-size: 14px; margin-bottom: 20px; }
+  .meta b { color: var(--ink); font-weight: 600; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; margin-bottom: 16px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 720px) { .grid { grid-template-columns: 1fr; } }
+  .row { display: grid; grid-template-columns: 110px 1fr 56px; align-items: center; gap: 10px; padding: 4px 0; }
+  .sym { font-weight: 600; font-variant-numeric: tabular-nums; }
+  .bar { height: 12px; background: var(--bar-bg); border-radius: 4px; overflow: hidden; }
+  .bar > span { display: block; height: 100%; border-radius: 0 4px 4px 0; }
+  .pct { text-align: right; font-variant-numeric: tabular-nums; }
+  .tag { display: inline-block; font-size: 12px; padding: 1px 8px; border-radius: 999px; border: 1px solid var(--line); color: var(--ink2); margin-left: 6px; }
+  .dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; vertical-align: 0; }
+  .small { font-size: 13px; color: var(--ink2); }
+  .chg { margin-top: 10px; font-size: 13px; color: var(--ink2); }
+  .late { color: var(--red); font-weight: 600; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; }
+  th, td { text-align: right; padding: 6px 8px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+  th:first-child, td:first-child { text-align: left; }
+  th { color: var(--ink2); font-weight: 600; font-size: 13px; }
+  .scroll { overflow-x: auto; }
+  .neg { color: var(--red); }
+  .dim { color: var(--muted); }
+  footer { color: var(--muted); font-size: 13px; margin-top: 24px; }
+  a { color: var(--blue); }
+  #err { display: none; }
+</style>
+</head>
+<body>
+<main>
+  <h1>ETF Momentum Signals</h1>
+  <p class="sub">Target allocation of the 50/50 momentum blend on 25 NSE ETFs. Updated automatically at 08:30 IST on rebalance days, for trading at the 9:15 open.</p>
+
+  <div class="card" id="err"></div>
+  <div class="meta" id="meta"></div>
+
+  <div class="card">
+    <h2>Combined allocation <span class="small">% of total capital</span></h2>
+    <div id="combined"></div>
+  </div>
+
+  <div class="grid">
+    <div class="card" id="sleeveA"></div>
+    <div class="card" id="sleeveB"></div>
+  </div>
+
+  <div class="card">
+    <h2>All 25 ETFs <span class="small">as of the last update</span></h2>
+    <div class="scroll"><table id="rank"></table></div>
+    <p class="small">Needs at least ₹3 Cr/day average turnover (60 days) to be picked. Vol is annualised, from 26 weekly returns.</p>
+  </div>
+
+  <div class="card">
+    <h2>Rebalance history</h2>
+    <div class="scroll"><table id="hist"></table></div>
+  </div>
+
+  <footer>
+    How it works and the backtest: <a href="https://github.com/SY171995/ETF_MOMENTUM">research article</a>.
+    Research output, not investment advice. Past backtest returns do not predict future returns.
+  </footer>
+</main>
+<script>
+const COLORS = { A: "var(--orange)", B: "var(--aqua)", C: "var(--blue)" };
+const pct = (v, d = 1) => v == null ? "–" : (v * 100).toFixed(d) + "%";
+const spct = v => v == null ? "–" : (v >= 0 ? "+" : "") + (v * 100).toFixed(1) + "%";
+const fmtDate = s => s ? new Date(s + "T00:00:00").toLocaleDateString("en-IN",
+  { weekday: "short", day: "2-digit", month: "short", year: "numeric" }) : "–";
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+function bars(targets, color, scale) {
+  const rows = Object.entries(targets).map(([s, w]) =>
+    `<div class="row"><span class="sym">${esc(s)}</span>
+       <div class="bar"><span style="width:${Math.min(100, w / scale * 100)}%;background:${color}"></span></div>
+       <span class="pct">${pct(w)}</span></div>`);
+  const cash = 1 - Object.values(targets).reduce((a, b) => a + b, 0);
+  if (cash > 0.005) rows.push(`<div class="row"><span class="sym dim">CASH</span>
+       <div class="bar"><span style="width:${cash / scale * 100}%;background:var(--muted)"></span></div>
+       <span class="pct">${pct(cash)}</span></div>`);
+  return rows.join("");
+}
+
+function changes(now, prev) {
+  if (!prev || !Object.keys(prev).length) return "Initial allocation.";
+  const buy = Object.keys(now).filter(s => !(s in prev));
+  const sell = Object.keys(prev).filter(s => !(s in now));
+  const parts = [];
+  if (buy.length) parts.push("<b>Buy</b> " + buy.map(esc).join(", "));
+  if (sell.length) parts.push("<b>Sell</b> " + sell.map(esc).join(", "));
+  return parts.length ? parts.join(" · ") + " · resize the rest" : "Same ETFs; resize to new weights.";
+}
+
+function sleeve(key, s) {
+  if (!s) return `<h2>Sleeve ${key}</h2><p class="small">No data yet.</p>`;
+  return `<h2><span class="dot" style="background:${COLORS[key]}"></span>Sleeve ${key}: ${esc(s.name)}
+            <span class="tag">${esc(s.freq)}</span><span class="tag">50% of capital</span></h2>
+          ${bars(s.targets, COLORS[key], 0.35)}
+          <p class="chg">${changes(s.targets, s.previous)}</p>
+          <p class="small">Rebalanced ${fmtDate(s.rebalanced_on)}${s.late ? ' <span class="late">(late)</span>' : ""}
+            · next expected ${fmtDate(s.next_rebalance)}</p>`;
+}
+
+function render(st) {
+  document.getElementById("meta").innerHTML =
+    `<span>Prices up to <b>${fmtDate(st.data_through)}</b> close</span>
+     <span>Updated <b>${new Date(st.updated_at).toLocaleString("en-IN", { timeZone: "Asia/Kolkata" })} IST</b></span>`;
+  const comb = st.combined || {};
+  const top = Math.max(0.3, ...Object.values(comb));
+  document.getElementById("combined").innerHTML = bars(comb, COLORS.C, top);
+  document.getElementById("sleeveA").innerHTML = sleeve("A", st.sleeves && st.sleeves.A);
+  document.getElementById("sleeveB").innerHTML = sleeve("B", st.sleeves && st.sleeves.B);
+
+  const inA = st.sleeves?.A?.targets || {}, inB = st.sleeves?.B?.targets || {};
+  const rows = (st.ranking || []).map(r => `<tr>
+      <td class="sym">${esc(r.symbol)}</td>
+      <td class="${r.ret_12m < 0 ? "neg" : ""}">${spct(r.ret_12m)}</td>
+      <td class="${r.ret_3m < 0 ? "neg" : ""}">${spct(r.ret_3m)}</td>
+      <td>${pct(r.vol)}</td>
+      <td class="${r.liquid ? "" : "dim"}">${r.turnover_cr == null ? "–" : "₹" + r.turnover_cr.toFixed(1) + " Cr"}</td>
+      <td>${r.symbol in inA ? "A" : ""}${r.symbol in inA && r.symbol in inB ? " + " : ""}${r.symbol in inB ? "B" : ""}</td></tr>`);
+  document.getElementById("rank").innerHTML =
+    `<thead><tr><th>ETF</th><th>12-month return</th><th>3-month return</th><th>Vol</th><th>Turnover/day</th><th>Held by</th></tr></thead>
+     <tbody>${rows.join("")}</tbody>`;
+
+  const h = (st.history || []).slice().reverse().map(e => `<tr>
+      <td>${fmtDate(e.date)}</td><td style="text-align:left">Sleeve ${esc(e.sleeve)}</td>
+      <td style="text-align:left;white-space:normal">${Object.entries(e.targets).map(([s, w]) => `${esc(s)} ${pct(w, 0)}`).join(" · ")}</td></tr>`);
+  document.getElementById("hist").innerHTML =
+    `<thead><tr><th>Date</th><th style="text-align:left">Sleeve</th><th style="text-align:left">Allocation</th></tr></thead>
+     <tbody>${h.join("") || '<tr><td colspan="3" class="dim">No rebalances yet.</td></tr>'}</tbody>`;
+}
+
+fetch("signals.json?t=" + Date.now()).then(r => {
+  if (!r.ok) throw new Error("signals.json not found (HTTP " + r.status + ")");
+  return r.json();
+}).then(render).catch(e => {
+  const el = document.getElementById("err");
+  el.style.display = "block";
+  el.innerHTML = `<b>No signal published yet.</b> <span class="small">${esc(e.message)}</span>`;
+});
+</script>
+</body>
+</html>

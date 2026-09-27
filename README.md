@@ -8,6 +8,8 @@ buying and holding **NIFTYBEES**.
 
 **Backtest period:** July 2022 – June 2026 (about 4 years, daily data)
 
+**Live signals:** the current target allocation is published at **https://sy171995.github.io/ETF_MOMENTUM/**, updated automatically on each rebalance day.
+
 ![Growth of ₹1](charts/01_equity_curves.png)
 
 ## Summary
