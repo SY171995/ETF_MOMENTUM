@@ -42,9 +42,10 @@ The selected model splits capital 50/50 between two momentum sleeves:
 4. [Turnover, costs and tax](#4-turnover-costs-and-tax)
 5. [Volatility-based position sizing](#5-volatility-based-position-sizing)
 6. [The 50/50 blend](#6-the-5050-blend)
-7. [Controls: is it real?](#7-controls-is-it-real)
-8. [Data problems found and fixed](#8-data-problems-found-and-fixed)
-9. [Conclusion](#9-conclusion)
+7. [Month by month vs NIFTYBEES](#7-month-by-month-vs-niftybees)
+8. [Controls: is it real?](#8-controls-is-it-real)
+9. [Data problems found and fixed](#9-data-problems-found-and-fixed)
+10. [Conclusion](#10-conclusion)
 
 ---
 
@@ -98,7 +99,7 @@ Each ETF is measured over its own history since June 2021, against NIFTYBEES ove
 | New ETFs | An ETF can only be ranked once it has a full lookback of its own history. |
 | Liquidity floor | 60-day average of close × volume must be at least **₹3 Cr/day**, measured on the previous day. |
 | Holdings | The top N by rank. If fewer than N are eligible, the empty slots stay in cash. |
-| Rebalance | Weekly, biweekly or monthly, on the first trading day of the period. Positions are reset to target weights. |
+| Rebalance | Weekly, biweekly or monthly, on the first trading day of the period. Positions are reset to target weights. For the selected blend: the monthly sleeve trades on the **first trading day of each month**, the biweekly sleeve on the **first trading day of every other week** (almost always a Monday). |
 | Costs | **0.10% per side** on traded value (brokerage, stamp duty, STT, bid-ask spread). |
 | Tax | Indian capital-gains tax: **20% short-term** (held < 365 days), **12.5% long-term**. Uses first-in-first-out lots, nets losses and carries them forward, and is deducted at each financial year-end (April–March). The ₹1.25L long-term exemption is ignored. |
 | Price cleaning | NSE price downloads are **not** split-adjusted. Splits are back-adjusted and bad ticks removed before anything else. |
@@ -262,7 +263,60 @@ The blend beat NIFTYBEES in every calendar year.
 
 ---
 
-## 7. Controls: is it real?
+## 7. Month by month vs NIFTYBEES
+
+Monthly returns of the 50/50 blend against NIFTYBEES, **before tax** (trading costs are deducted). Tax is paid as one lump at each financial year-end, so after-tax monthly figures would show a false loss every March. After-tax yearly totals are in [section 6](#6-the-5050-blend).
+
+![Monthly blend minus NIFTYBEES](charts/09_monthly_vs_nifty.png)
+
+**50/50 blend, monthly return %**
+
+| Year | Jan | Feb | Mar | Apr | May | Jun | Jul | Aug | Sep | Oct | Nov | Dec | **Year** |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 2022 (H2) |  |  |  |  |  |  | 6.0 | 4.2 | -3.9 | 6.0 | 5.2 | 1.5 | **20.1** |
+| 2023 | -2.2 | -3.1 | 4.3 | 3.1 | 3.6 | 3.6 | 5.2 | -2.0 | 5.4 | -3.9 | 8.3 | 8.1 | **33.7** |
+| 2024 | 5.4 | 5.8 | 1.4 | 9.4 | 3.1 | 1.8 | 4.2 | 1.4 | 1.1 | -4.4 | 1.9 | 9.1 | **47.3** |
+| 2025 | -0.4 | -1.1 | 1.5 | -1.3 | 3.2 | 3.0 | 2.8 | 3.6 | 12.4 | 4.7 | 1.2 | 4.1 | **38.4** |
+| 2026 (to 12 Jun) | 11.1 | 1.6 | -11.2 | 13.8 | 6.3 | -4.8 |  |  |  |  |  |  | **15.4** |
+
+**NIFTYBEES, monthly return %**
+
+| Year | Jan | Feb | Mar | Apr | May | Jun | Jul | Aug | Sep | Oct | Nov | Dec | **Year** |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 2022 (H2) |  |  |  |  |  |  | 8.7 | 4.0 | -3.7 | 5.1 | 4.3 | -3.3 | **15.4** |
+| 2023 | -2.3 | -1.9 | 0.1 | 3.9 | 3.2 | 3.4 | 3.3 | -2.2 | 1.9 | -2.7 | 5.3 | 7.9 | **21.0** |
+| 2024 | 0.3 | 1.2 | 1.5 | 1.3 | 0.4 | 6.5 | 3.8 | 1.2 | 2.6 | -6.2 | -0.3 | -2.0 | **10.4** |
+| 2025 | -0.6 | -5.5 | 5.9 | 3.3 | 2.2 | 3.1 | -2.5 | -1.1 | 0.5 | 4.9 | 1.9 | -0.4 | **11.7** |
+| 2026 (to 12 Jun) | -2.9 | -0.5 | -11.2 | 7.3 | -1.6 | 0.0 |  |  |  |  |  |  | **-9.3** |
+
+**Blend minus NIFTYBEES, percentage points**
+
+| Year | Jan | Feb | Mar | Apr | May | Jun | Jul | Aug | Sep | Oct | Nov | Dec | **Year** |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 2022 (H2) |  |  |  |  |  |  | -2.7 | +0.2 | -0.2 | +0.9 | +0.9 | +4.8 | **+4.7** |
+| 2023 | +0.1 | -1.2 | +4.2 | -0.8 | +0.3 | +0.2 | +1.9 | +0.2 | +3.6 | -1.2 | +3.0 | +0.2 | **+12.7** |
+| 2024 | +5.1 | +4.6 | -0.2 | +8.2 | +2.7 | -4.7 | +0.3 | +0.2 | -1.5 | +1.8 | +2.2 | +11.1 | **+37.0** |
+| 2025 | +0.1 | +4.4 | -4.5 | -4.6 | +1.0 | 0.0 | +5.4 | +4.8 | +11.9 | -0.2 | -0.7 | +4.5 | **+26.8** |
+| 2026 (to 12 Jun) | +14.0 | +2.1 | 0.0 | +6.5 | +7.8 | -4.8 |  |  |  |  |  |  | **+24.7** |
+
+| | 50/50 blend | NIFTYBEES |
+|---|---|---|
+| Months with a gain | 37 of 48 | 30 of 48 |
+| Average month | +2.91% | +1.01% |
+| Best month | +13.8% (Apr 2026) | +8.7% (Jul 2022) |
+| Worst month | -11.2% (Mar 2026) | -11.2% (Mar 2026) |
+| Average in the 18 months Nifty fell | **+0.55%** | -2.82% |
+| Average in the 30 months Nifty rose | +4.33% | +3.30% |
+
+- **The blend beat NIFTYBEES in 33 of 48 months.** The median month's lead was only +0.6 points, so most of the gap comes from a handful of large months: Dec 2024 (MAFANG and MON100 each up about 22%), Sep 2025 (silver +20%, gold and Hang Seng about +12% each) and Jan 2026 (silver +33%, gold +19%).
+- **Most of the edge comes in falling months.** When Nifty fell, the blend averaged +0.55% and beat it in 14 of 18 such months, by rotating into gold, gilt, liquid or international ETFs.
+- **It does not always protect.** In March 2026 both fell 11.2%, when a gold and silver crash coincided with the Nifty fall.
+- **It lags sharp Indian rebounds.** Examples are Jun 2024 and Mar–Apr 2025, when the strategy was still holding defensive or foreign ETFs.
+- **It moves with Nifty only partly.** Monthly correlation is 0.56, and the blend moves about 0.68× as much as Nifty.
+
+---
+
+## 8. Controls: is it real?
 
 | Test | Net CAGR | Before tax | Sharpe | Max DD |
 |---|---|---|---|---|
@@ -281,7 +335,7 @@ The blend beat NIFTYBEES in every calendar year.
 
 ---
 
-## 8. Data problems found and fixed
+## 9. Data problems found and fixed
 
 | Problem | Effect | Fix |
 |---|---|---|
@@ -292,7 +346,7 @@ The blend beat NIFTYBEES in every calendar year.
 
 ---
 
-## 9. Conclusion
+## 10. Conclusion
 
 **Selected model: the 50/50 blend of two momentum sleeves on the 25-ETF universe.**
 
