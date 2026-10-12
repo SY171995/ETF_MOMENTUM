@@ -1,231 +1,231 @@
 {
- "updated_at": "2026-10-01T03:00:54+00:00",
- "data_through": "2026-09-29",
+ "updated_at": "2026-10-12T03:00:54+00:00",
+ "data_through": "2026-10-09",
  "ranking": [
   {
-   "symbol": "SILVERBEES",
-   "ret_12m": 0.580041,
-   "ret_3m": -0.032967,
-   "vol": 0.30379,
-   "turnover_cr": 472.687523,
+   "symbol": "MAFANG",
+   "ret_12m": 0.697534,
+   "ret_3m": 0.478447,
+   "vol": 0.400658,
+   "turnover_cr": 13.558028,
    "liquid": true,
-   "close": 209.149994
+   "close": 287.070007
+  },
+  {
+   "symbol": "SILVERBEES",
+   "ret_12m": 0.540971,
+   "ret_3m": 0.00407,
+   "vol": 0.295741,
+   "turnover_cr": 454.741863,
+   "liquid": true,
+   "close": 209.679993
   },
   {
    "symbol": "MON100",
-   "ret_12m": 0.495042,
-   "ret_3m": -0.048407,
-   "vol": 0.294638,
-   "turnover_cr": 18.110073,
+   "ret_12m": 0.459124,
+   "ret_3m": -0.009917,
+   "vol": 0.280865,
+   "turnover_cr": 19.333345,
    "liquid": true,
-   "close": 319.640015
-  },
-  {
-   "symbol": "MAFANG",
-   "ret_12m": 0.400988,
-   "ret_3m": 0.264281,
-   "vol": 0.350754,
-   "turnover_cr": 9.659144,
-   "liquid": true,
-   "close": 238.139999
-  },
-  {
-   "symbol": "METALIETF",
-   "ret_12m": 0.286561,
-   "ret_3m": 0.039106,
-   "vol": 0.182706,
-   "turnover_cr": 10.289629,
-   "liquid": true,
-   "close": 13.02
+   "close": 324.480011
   },
   {
    "symbol": "GOLDBEES",
-   "ret_12m": 0.27756,
-   "ret_3m": 0.025066,
-   "vol": 0.19355,
-   "turnover_cr": 286.291509,
+   "ret_12m": 0.280647,
+   "ret_3m": 0.039022,
+   "vol": 0.189161,
+   "turnover_cr": 290.193703,
    "liquid": true,
-   "close": 120.639999
+   "close": 122.75
   },
   {
    "symbol": "PHARMABEES",
-   "ret_12m": 0.232919,
-   "ret_3m": 0.070493,
-   "vol": 0.107155,
-   "turnover_cr": 12.354464,
-   "liquid": true,
-   "close": 27.790001
-  },
-  {
-   "symbol": "HEALTHY",
-   "ret_12m": 0.153432,
-   "ret_3m": 0.033776,
-   "vol": 0.109799,
-   "turnover_cr": 0.581934,
-   "liquid": false,
-   "close": 17.139999
-  },
-  {
-   "symbol": "MODEFENCE",
-   "ret_12m": 0.134902,
-   "ret_3m": -0.038082,
-   "vol": 0.221652,
-   "turnover_cr": 15.063874,
-   "liquid": true,
-   "close": 101.290001
-  },
-  {
-   "symbol": "PSUBNKBEES",
-   "ret_12m": 0.088053,
-   "ret_3m": -0.059446,
-   "vol": 0.181049,
-   "turnover_cr": 18.933775,
-   "liquid": true,
-   "close": 89.709999
-  },
-  {
-   "symbol": "HDFCSML250",
-   "ret_12m": 0.0531,
-   "ret_3m": 0.002159,
-   "vol": 0.161627,
-   "turnover_cr": 27.307,
-   "liquid": true,
-   "close": 181.070007
-  },
-  {
-   "symbol": "LIQUIDCASE",
-   "ret_12m": 0.050099,
-   "ret_3m": 0.011498,
-   "vol": 0.001166,
-   "turnover_cr": 194.705215,
-   "liquid": true,
-   "close": 116.120003
-  },
-  {
-   "symbol": "JUNIORBEES",
-   "ret_12m": 0.036568,
-   "ret_3m": -0.026533,
-   "vol": 0.170884,
-   "turnover_cr": 27.396016,
-   "liquid": true,
-   "close": 761.659973
-  },
-  {
-   "symbol": "LTGILTBEES",
-   "ret_12m": 0.022845,
-   "ret_3m": -0.011044,
-   "vol": 0.033915,
-   "turnover_cr": 4.255317,
-   "liquid": true,
-   "close": 29.549999
-  },
-  {
-   "symbol": "BANKBEES",
-   "ret_12m": -0.005883,
-   "ret_3m": -0.05941,
-   "vol": 0.15962,
-   "turnover_cr": 38.006888,
-   "liquid": true,
-   "close": 564.419983
-  },
-  {
-   "symbol": "AUTOBEES",
-   "ret_12m": -0.006955,
-   "ret_3m": -0.021457,
-   "vol": 0.219957,
-   "turnover_cr": 6.446717,
-   "liquid": true,
-   "close": 272.720001
-  },
-  {
-   "symbol": "PVTBANIETF",
-   "ret_12m": -0.011103,
-   "ret_3m": -0.062785,
-   "vol": 0.16814,
-   "turnover_cr": 9.158963,
+   "ret_12m": 0.213994,
+   "ret_3m": 0.010972,
+   "vol": 0.120015,
+   "turnover_cr": 12.245423,
    "liquid": true,
    "close": 26.719999
   },
   {
-   "symbol": "CPSEETF",
-   "ret_12m": -0.016153,
-   "ret_3m": -0.060759,
-   "vol": 0.128067,
-   "turnover_cr": 7.991054,
+   "symbol": "METALIETF",
+   "ret_12m": 0.194857,
+   "ret_3m": -0.052549,
+   "vol": 0.174322,
+   "turnover_cr": 10.390022,
    "liquid": true,
-   "close": 91.360001
+   "close": 12.08
   },
   {
-   "symbol": "INFRAIETF",
-   "ret_12m": -0.026952,
-   "ret_3m": -0.066543,
-   "vol": 0.119574,
-   "turnover_cr": 4.095738,
+   "symbol": "MODEFENCE",
+   "ret_12m": 0.146121,
+   "ret_3m": -0.052172,
+   "vol": 0.192362,
+   "turnover_cr": 14.517468,
    "liquid": true,
-   "close": 90.620003
+   "close": 98.830002
   },
   {
-   "symbol": "MOREALTY",
-   "ret_12m": -0.037252,
-   "ret_3m": -0.026831,
-   "vol": 0.307418,
-   "turnover_cr": 7.574498,
-   "liquid": true,
-   "close": 84.510002
-  },
-  {
-   "symbol": "NIFTYBEES",
-   "ret_12m": -0.077407,
-   "ret_3m": -0.053961,
-   "vol": 0.120529,
-   "turnover_cr": 155.09243,
-   "liquid": true,
-   "close": 259.470001
-  },
-  {
-   "symbol": "CONSUMBEES",
-   "ret_12m": -0.079556,
-   "ret_3m": -0.042196,
-   "vol": 0.134621,
-   "turnover_cr": 1.189382,
+   "symbol": "HEALTHY",
+   "ret_12m": 0.119588,
+   "ret_3m": -0.030357,
+   "vol": 0.128553,
+   "turnover_cr": 0.744296,
    "liquid": false,
-   "close": 125.07
+   "close": 16.290001
   },
   {
-   "symbol": "HNGSNGBEES",
-   "ret_12m": -0.133588,
-   "ret_3m": -0.051214,
-   "vol": 0.189625,
-   "turnover_cr": 4.407915,
+   "symbol": "PSUBNKBEES",
+   "ret_12m": 0.081249,
+   "ret_3m": -0.03805,
+   "vol": 0.14999,
+   "turnover_cr": 18.297126,
    "liquid": true,
-   "close": 452.959991
+   "close": 90.760002
   },
   {
-   "symbol": "FMCGIETF",
-   "ret_12m": -0.178838,
-   "ret_3m": -0.098788,
-   "vol": 0.123829,
-   "turnover_cr": 7.419212,
+   "symbol": "HDFCSML250",
+   "ret_12m": 0.055724,
+   "ret_3m": -0.029901,
+   "vol": 0.1427,
+   "turnover_cr": 28.411535,
    "liquid": true,
-   "close": 48.349998
+   "close": 177.139999
   },
   {
-   "symbol": "ITBEES",
-   "ret_12m": -0.183673,
-   "ret_3m": 0.028724,
-   "vol": 0.256485,
-   "turnover_cr": 45.534303,
+   "symbol": "LIQUIDCASE",
+   "ret_12m": 0.051053,
+   "ret_3m": 0.01183,
+   "vol": 0.000541,
+   "turnover_cr": 209.543066,
    "liquid": true,
-   "close": 30.799999
+   "close": 116.32
+  },
+  {
+   "symbol": "PVTBANIETF",
+   "ret_12m": 0.033683,
+   "ret_3m": -0.027465,
+   "vol": 0.119071,
+   "turnover_cr": 8.126273,
+   "liquid": true,
+   "close": 27.620001
   },
   {
    "symbol": "MID150BEES",
-   "ret_12m": null,
-   "ret_3m": null,
-   "vol": null,
-   "turnover_cr": null,
+   "ret_12m": 0.02855,
+   "ret_3m": -0.066199,
+   "vol": 0.134096,
+   "turnover_cr": 18.595841,
+   "liquid": true,
+   "close": 223.720001
+  },
+  {
+   "symbol": "LTGILTBEES",
+   "ret_12m": 0.018018,
+   "ret_3m": -0.020013,
+   "vol": 0.030985,
+   "turnover_cr": 4.449389,
+   "liquid": true,
+   "close": 29.379999
+  },
+  {
+   "symbol": "BANKBEES",
+   "ret_12m": 0.016915,
+   "ret_3m": -0.045404,
+   "vol": 0.110559,
+   "turnover_cr": 36.246612,
+   "liquid": true,
+   "close": 572.919983
+  },
+  {
+   "symbol": "JUNIORBEES",
+   "ret_12m": 0.011304,
+   "ret_3m": -0.055944,
+   "vol": 0.126659,
+   "turnover_cr": 28.787727,
+   "liquid": true,
+   "close": 738.109985
+  },
+  {
+   "symbol": "INFRAIETF",
+   "ret_12m": -0.046308,
+   "ret_3m": -0.090113,
+   "vol": 0.099231,
+   "turnover_cr": 3.929553,
+   "liquid": true,
+   "close": 88.349998
+  },
+  {
+   "symbol": "CPSEETF",
+   "ret_12m": -0.048728,
+   "ret_3m": -0.086988,
+   "vol": 0.129694,
+   "turnover_cr": 7.85427,
+   "liquid": true,
+   "close": 87.849998
+  },
+  {
+   "symbol": "AUTOBEES",
+   "ret_12m": -0.058663,
+   "ret_3m": -0.070337,
+   "vol": 0.182939,
+   "turnover_cr": 6.836789,
+   "liquid": true,
+   "close": 257.869995
+  },
+  {
+   "symbol": "NIFTYBEES",
+   "ret_12m": -0.072679,
+   "ret_3m": -0.06442,
+   "vol": 0.094751,
+   "turnover_cr": 163.611996,
+   "liquid": true,
+   "close": 257.350006
+  },
+  {
+   "symbol": "MOREALTY",
+   "ret_12m": -0.076038,
+   "ret_3m": -0.140963,
+   "vol": 0.261111,
+   "turnover_cr": 6.411355,
+   "liquid": true,
+   "close": 80.32
+  },
+  {
+   "symbol": "CONSUMBEES",
+   "ret_12m": -0.091282,
+   "ret_3m": -0.065732,
+   "vol": 0.121333,
+   "turnover_cr": 1.194679,
    "liquid": false,
-   "close": 227.380005
+   "close": 121.949997
+  },
+  {
+   "symbol": "HNGSNGBEES",
+   "ret_12m": -0.116883,
+   "ret_3m": -0.047591,
+   "vol": 0.115616,
+   "turnover_cr": 4.334095,
+   "liquid": true,
+   "close": 460.890015
+  },
+  {
+   "symbol": "ITBEES",
+   "ret_12m": -0.133605,
+   "ret_3m": 0.025773,
+   "vol": 0.254926,
+   "turnover_cr": 41.811129,
+   "liquid": true,
+   "close": 31.84
+  },
+  {
+   "symbol": "FMCGIETF",
+   "ret_12m": -0.172231,
+   "ret_3m": -0.084627,
+   "vol": 0.129203,
+   "turnover_cr": 7.245894,
+   "liquid": true,
+   "close": 48.349998
   }
  ],
  "sleeves": {
@@ -257,28 +257,34 @@
    "rank": "3m",
    "freq": "biweekly",
    "targets": {
+    "LIQUIDCASE": 0.3,
+    "PHARMABEES": 0.2910866303434719,
+    "GOLDBEES": 0.18468183373935804,
+    "ITBEES": 0.13703833141576863,
+    "MAFANG": 0.08719320450140158
+   },
+   "previous": {
     "PHARMABEES": 0.3,
     "GOLDBEES": 0.2404041530842767,
     "ITBEES": 0.17693023357673712,
     "MOREALTY": 0.1521426246605313,
     "MAFANG": 0.1305229886784549
    },
-   "previous": {},
-   "rebalanced_on": "2026-09-28",
-   "period": "2026-09-26/2026-10-02",
+   "rebalanced_on": "2026-10-12",
+   "period": "2026-10-10/2026-10-16",
    "late": false,
-   "next_rebalance": "2026-10-12"
+   "next_rebalance": "2026-10-26"
   }
  },
  "combined": {
-  "GOLDBEES": 0.24823677303189795,
-  "PHARMABEES": 0.15,
-  "MAFANG": 0.1359126020919313,
+  "GOLDBEES": 0.22037561335943862,
+  "LIQUIDCASE": 0.15,
+  "PHARMABEES": 0.14554331517173594,
   "METALIETF": 0.13563396111985332,
-  "ITBEES": 0.08846511678836856,
+  "MAFANG": 0.11424771000340463,
   "MON100": 0.0841069980866074,
   "SILVERBEES": 0.08157323655107583,
-  "MOREALTY": 0.07607131233026565
+  "ITBEES": 0.06851916570788431
  },
  "history": [
   {
@@ -312,6 +318,17 @@
     "MON100": 0.1682139961732148,
     "SILVERBEES": 0.16314647310215166,
     "MAFANG": 0.14130221550540767
+   }
+  },
+  {
+   "date": "2026-10-12",
+   "sleeve": "B",
+   "targets": {
+    "LIQUIDCASE": 0.3,
+    "PHARMABEES": 0.2910866303434719,
+    "GOLDBEES": 0.18468183373935804,
+    "ITBEES": 0.13703833141576863,
+    "MAFANG": 0.08719320450140158
    }
   }
  ]
